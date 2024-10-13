@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" href="css/report.css" th:href="@{/css/report.css}" />
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/report.js" th:src="@{js/report.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body>
+
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+			<!--Cards-->
+			<div class="row dashboard-counts">
+				<div class="col-md-12">
+					<h4 class="fw-bold text-uppercase"></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header fw-bold">
+							All Report
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Report Student</h5>
+											<!--<p class="card-text">With supporting text below as a natural lead-in to
+												additional content.</p>-->
+											<a href="ReportStudent" class="btn btn-primary">Go</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Report Book</h5>
+											<!--<p class="card-text">With supporting text below as a natural lead-in to
+												additional content.</p>-->
+											<a href="ReportBook" class="btn btn-primary">Go</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Book Issue Report</h5>
+											<!--<p class="card-text">With supporting text below as a natural lead-in to
+												additional content.</p>-->
+											<a href="BookIssueReport" class="btn btn-primary">Go</a>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+</body>
+
+</html>

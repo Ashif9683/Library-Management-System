@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+
+<body>
+	<!-- side bar  -->
+	<div th:fragment="sidenav-bar">
+		<div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample"
+			aria-labelledby="offcanvasExampleLabel">
+			<div class="offcanvas-body">
+				<nav class="navbar-dark">
+					<ul class="navbar-nav">
+						<li>
+							<div class="text-secondary small fw-bold text-uppercase">
+								Core
+							</div>
+						</li>
+						<li class="nav-item">
+
+							<th:block th:if="${session.fectchUsernameAndPassword.userrole == 'ADMIN'}">
+								<a class="nav-link active" aria-current="page" th:href="@{AdminDashboard}">Admin
+									Dashboard</a>
+							</th:block>
+							<th:block th:if="${session.fectchUsernameAndPassword.userrole == 'USER'}">
+								<a class="nav-link active" aria-current="page" th:href="@{dashboard}">Dashboard</a>
+							</th:block>
+							<th:block th:if="${session.fectchUsernameAndPassword.userrole == 'STUDENT'}">
+								<a class="nav-link active" aria-current="page" th:href="@{studentdashboard}">Student
+									Dashboard</a>
+							</th:block>
+
+
+						</li>
+						<li class="my-0">
+							<hr />
+						</li>
+						<th:block th:if="${session.fectchUsernameAndPassword.userrole == 'ADMIN'}">
+							<li>
+								<div class="text-secondary small fw-bold text-uppercase">
+									User
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#userManagement"
+									role="button" aria-expanded="false" aria-controls="userManagement">
+									<i class="fa-solid fa-book me-2"></i>
+									User Management
+									<span class="right-icon float-end"><i class="fas fa-chevron-down"></i></span>
+								</a>
+
+								<div class="collapse" id="userManagement">
+									<div>
+										<ul class="navbar-nav ps-3">
+											<li>
+												<a href="userAdd" class="nav-link"><i class="fa-solid fa-plus me-2"></i>
+													Add User</a>
+											</li>
+
+											<li>
+												<a href="manageUser" class="nav-link"><i
+														class="fa-solid fa-list me-2"></i>User Manage All</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+
+							</li>
+							<li class="my-0">
+								<hr />
+							</li>
+						</th:block>
+
+						<th:block th:if="${session.fectchUsernameAndPassword.userrole != 'STUDENT'}">
+							<li>
+								<div class="text-secondary small fw-bold text-uppercase">
+									Book
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#booksManagement"
+									role="button" aria-expanded="false" aria-controls="booksManagement">
+									<i class="fa-solid fa-book me-2"></i>
+									Books Management
+									<span class="right-icon float-end"><i class="fas fa-chevron-down"></i></span>
+								</a>
+
+								<div class="collapse" id="booksManagement">
+									<div>
+										<ul class="navbar-nav ps-3">
+											<th:block th:if="${session.fectchUsernameAndPassword.userrole != 'USER'}">
+												<li>
+													<a href="add" class="nav-link"><i class="fa-solid fa-plus me-2"></i>
+														Add Book</a>
+												</li>
+												<li>
+													<a href="addCategory" class="nav-link"><i
+															class="fa-solid fa-plus me-2"></i> Add Category</a>
+												</li>
+												<li>
+													<a href="addAccessionCode" class="nav-link"><i class="fa-solid fa-plus me-2"></i> Add Accession Code</a>
+												</li>
+												<li>
+													<a href="fileUploadBook" class="nav-link"><i
+															class="fa-solid fa-plus me-2"></i>Book Upload file</a>
+												</li>
+											</th:block>
+
+											<li>
+												<a href="manageBook" class="nav-link"><i
+														class="fa-solid fa-list me-2"></i>Book Manage All</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+
+							<li class="my-0">
+								<hr />
+							</li>
+
+							<li>
+								<div class="text-secondary small fw-bold text-uppercase">
+									Student
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#studentsManagement"
+									role="button" aria-expanded="false" aria-controls="studentsManagement">
+									<i class="fa-solid fa-users me-2"></i>
+									Students
+									<span class="right-icon float-end"><i class="fas fa-chevron-down"></i></span>
+								</a>
+
+								<div class="collapse" id="studentsManagement">
+									<div>
+										<ul class="navbar-nav ps-3">
+
+											<th:block th:if="${session.fectchUsernameAndPassword.userrole != 'USER'}">
+												<li>
+													<a href="addstudent" class="nav-link"><i
+															class="fa-solid fa-plus me-2"></i> Add Student</a>
+												</li>
+												<li>
+													<a href="addBranch" class="nav-link"><i
+															class="fa-solid fa-plus me-2"></i> Add Branch</a>
+												</li>
+												<li>
+													<a href="MigrateStudent" class="nav-link"><i
+															class="fa-solid fa-plus me-2"></i> Migrate Student</a>
+												</li>
+												<li>
+													<a href="fileUploadStudent" class="nav-link"><i
+															class="fa-solid fa-plus me-2"></i>Student Upload file</a>
+												</li>
+											</th:block>
+
+											<li>
+												<a href="manageStudent" class="nav-link"><i
+														class="fa-solid fa-list me-2"></i> Student Manage All</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+
+							<li class="my-0">
+								<hr />
+							</li>
+
+							<li>
+								<div class="text-secondary small fw-bold text-uppercase">
+									Issue
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#loanManagement"
+									role="button" aria-expanded="false" aria-controls="loanManagement">
+									<i class="fas fa-book-reader me-2"></i>
+									Books Issue
+									<span class="right-icon float-end"><i class="fas fa-chevron-down"></i></span>
+								</a>
+
+								<div class="collapse" id="loanManagement">
+									<div>
+										<ul class="navbar-nav ps-3">
+											<li>
+												<a href="addlbookIssue" class="nav-link"><i
+														class="fa-solid fa-plus me-2"></i> Book Issue</a>
+											</li>
+											<li>
+												<a href="RetrunbookWithoutAccession" class="nav-link"><i
+														class="fa-solid fa-plus me-2"></i>Retrun Book With Accession</a>
+											</li>
+											<li>
+												<a href="manageLoan" class="nav-link"><i
+														class="fa-solid fa-list me-2"></i> Manage All</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+
+						</th:block>
+
+						<th:block th:if="${session.fectchUsernameAndPassword.userrole == 'STUDENT'}">
+							<li>
+								<div class="text-secondary small fw-bold text-uppercase">
+									Student Book Record
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#studentissue"
+									role="button" aria-expanded="false" aria-controls="studentissue">
+									<i class="fas fa-book-reader me-2"></i>
+									Student Book Assign
+									<span class="right-icon float-end"><i class="fas fa-chevron-down"></i></span>
+								</a>
+
+								<div class="collapse" id="studentissue">
+									<div>
+										<ul class="navbar-nav ps-3">
+											<li>
+												<a href="studentbookissue" class="nav-link"><i
+														class="fa-solid fa-plus me-2"></i>Book Assign</a>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+							</li>
+						</th:block>
+
+						<!--  <li class="nav-item">
+                    <a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#subscriptionManagement" role="button" aria-expanded="false" aria-controls="subscriptionManagement">
+                        <i class="fa-solid fa-indian-rupee-sign me-2"></i>
+                        Subscription
+                        <span class="right-icon float-end"><i class="fas fa-chevron-down"></i></span>
+                    </a>
+
+                    <div class="collapse" id="subscriptionManagement">
+                        <div>
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="subscriptionsPlan" class="nav-link"><i class="fa-solid fa-plus me-2"></i> Plans</a>
+                                </li>
+                                <li>
+                                    <a href="purchase-history" class="nav-link"><i class="fa-solid fa-list me-2"></i> Purchase
+                                        History</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li> -->
+				
+				<th:block th:if="${session.fectchUsernameAndPassword.userrole != 'STUDENT'}">
+						<li class="my-0">
+							<hr />
+						</li>
+
+						<li>
+							<div class="text-secondary small fw-bold text-uppercase">
+								Report
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#ReportManagement"
+								role="button" aria-expanded="false" aria-controls="ReportManagement">
+								<i class="fas fa-book-reader me-2"></i> Report Download
+								<span class="right-icon float-end"><i class="fas fa-chevron-down"></i></span>
+							</a>
+
+							<div class="collapse" id="ReportManagement">
+								<div>
+									<ul class="navbar-nav ps-3">
+										<li>
+											<a href="report" class="nav-link"><i class="fa-solid fa-list me-2"></i>Report</a>
+										</li>
+										
+									</ul>
+								</div>
+							</div>
+						</li>
+						</th:block>
+						
+						<li class="my-0">
+							<hr />
+						</li>
+						<li class="nav-item">
+							<a href="/logoutUser" class="nav-link"><i class="fa-solid fa-right-from-bracket me-2"></i>
+								Logout</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

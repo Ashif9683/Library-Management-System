@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" ng-app="ReportBook">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" href="css/ReportBook.css" th:href="@{/css/ReportBook.css}" />
+	<link  rel="stylesheet" href="css/loader.css"  th:href="@{/css/loader.css}" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<script type="text/javascript" href="js/angular.js" th:src="@{js/angular.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+	<script src="/js/ReportBook.js"></script>
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body ng-controller="ReportBookController">
+
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+			<!--Cards-->
+			<div class="row dashboard-counts">
+				<div class="col-md-12">
+					<h4 class="fw-bold text-uppercase"></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header fw-bold">
+							Book Report
+							<button ng-click="goBack()" class="btn btn-primary1">Back</button>
+						</div>
+						<div class="card-body">
+							<div class="input-group mb-3">
+
+							
+								<div class="input-group-append">
+									<select id="accessionCodeCategory" name="accessionCodeCategory" class="form-controlAss"
+										ng-model="accessionCodeCategory">
+								        <option value="" disabled selected>Please select Book Accession Code Category </option>
+										<option ng-repeat="AccessionCodeCategorys in AccessionCodeCategory" value="{{AccessionCodeCategorys}}">{{AccessionCodeCategorys}}</option>
+									</select>
+								</div>
+								<div class="input-group-append">
+									<button class="btnGo btn-primary1" type="button"
+										ng-click="findrecordcategory()">Go</button>
+								</div>
+								<div class="input-group-append">
+									<button class="btnGo btn-primary1" type="button"
+										ng-click="downexcelreport()">Download Excel Report</button>
+								</div>
+							</div>
+
+
+							<div id="dataMigrateDisplay" ng-show="bookRecord.length > 0">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="data-table" class="table table-responsive table-striped"
+											style="width:100%">
+											<thead class="table-dark">
+												<tr>
+													<th scope="col">Serail No</th>
+													<th scope="col">Accession Code</th>
+													<th scope="col">Book Title</th>
+													<th scope="col">Author Name</th>
+													<th scope="col">Book Quantity</th>
+												</tr>
+											</thead>
+											<tbody id="bookRecord">
+												<tr ng-repeat="bookrecordRe in paginatedRecords">
+													<td>{{bookrecordRe.serailNo}}</td>
+													<td>{{bookrecordRe.accessionNumber}}</td>
+													<td>{{bookrecordRe.booktitle}}</td>
+													<td>{{bookrecordRe.authorName}}</td>
+													<td>{{bookrecordRe.bookquantity}}</td>
+													
+												</tr>
+											</tbody>
+										</table>
+										<ul id="pagination" class="pagination">
+											<li class="page-item" ng-class="{disabled: currentPage === 1}">
+												<a class="page-link" href="#" ng-click="goToPreviousPage()">Previous</a>
+											</li>
+											<li class="page-item" ng-repeat="page in visiblePages"
+												ng-class="{active: page === currentPage}">
+												<a class="page-link" href="#" ng-click="goToPage(page)">{{page}}</a>
+											</li>
+											<li class="page-item" ng-class="{disabled: currentPage === pageCount}">
+												<a class="page-link" href="#" ng-click="goToNextPage()">Next</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="loader-div">
+				    				    	<img class="loader-img" src="/images/ajax-loader.gif" style="height: 120px;width: auto;" />
+								   </div>
+	</main>
+
+
+</body>
+
+</html>

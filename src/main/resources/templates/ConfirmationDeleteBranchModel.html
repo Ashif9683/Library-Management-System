@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Record Confirmation</title>
+    <!-- Include Bootstrap CSS -->
+   
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+
+<!-- Modal for confirmation -->
+<div th:fragment="nav-depopca">
+    
+    <div id="deleteBranchModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeDeleteBranchModal()">&times;</span>
+        <h2>Delete Confirmation</h2>
+        <p>Are you sure you want to delete record with Primary Key: <span id="primaryKeyValue"></span>?</p>
+        
+        <div class="confirmDeleteButton">		
+	       	<a onclick="DeleteaddBranchModal()" class="btn btn-danger btn-sm">  Yes</a>                                             
+	        <button class="btn btn-primary btn-sm" onclick="closeDeleteBranchModal()">No</button>
+	    </div>
+    </div>
+</div>
+  
+</div>
+</body>
+</html>

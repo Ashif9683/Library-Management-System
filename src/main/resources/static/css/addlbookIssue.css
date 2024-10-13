@@ -1,0 +1,315 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.field {
+    flex: 1;
+    margin-right: 10px;
+}
+.ssss{
+	 width: 10%;
+   float: right;
+   text-align: right;
+}
+.data {
+    font-weight: bold;
+    color: #333; /* Change color as needed */
+}
+/* Style for form label */
+.form-label1 {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.dropdown-container {
+   width: 280px;
+    margin-right: 18px;
+    margin-top: 12px;
+    margin-bottom: 17px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1px;
+    box-sizing: border-box;
+
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.dropdown-list {
+   position: absolute;
+    top: 102%;
+    left: -2.2px;
+    width: 101%;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-top: black;
+    background: white;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+h1 {
+    color: #333;
+}
+
+
+p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #666;
+}
+
+
+
+.formContainer{
+	 display: inline-block;
+    width: 100%; /* Ensures the container takes full width for responsiveness */
+    padding: 1rem; /* Add some padding for better spacing */
+}
+.input-group1{
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-right: -60px; */
+    margin-left: -284px;
+    width: 106%;
+    justify-content: space-evenly;
+    align-items: baseline;
+}.mb-31{
+	 margin-bottom: 1rem !important;
+}
+.book{
+	margin-bottom: 0.5rem !important;
+    text-align: left;
+   
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 11px 20px;
+    display: block;
+}
+/* Style for form input */
+.form-control1 {
+   	width: 20%;
+    display: block;
+    margin-bottom: 19px;
+    margin-right: 20px;
+    margin-left: 15px;
+    margin-top: 12px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;  
+}
+.form-controldrop {
+   	width: 20%;
+    display: block;
+    margin-bottom: 4px;
+    margin-right: 20px;
+    margin-left: 15px;
+    margin-top: 12px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;  
+}
+.form-controlbook{
+	width: 20%;
+    display: block;
+    margin-bottom: 4px;
+    margin-left: -256px;
+    margin-top: 12px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+/* Style for button */
+.btn {
+    padding: 11px 30px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin-bottom: 3px;
+    margin-left: 61px;
+    margin-right: 10px;
+    margin-top: 12px;
+    border-radius: 25px;
+}
+.btnadd{
+	padding: 11px 30px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin-bottom: 23px;
+    margin-left: 61px;
+    margin-right: -40px;
+    margin-top: 12px;
+    border-radius: 25px;
+}
+.btn2{
+	padding: 11px 30px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin-bottom: 3px;
+    margin-left: -297px;
+    margin-right: 385px;
+    margin-top: 12px;
+    border-radius: 25px;
+}
+.addbtn {
+   padding: 11px 30px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin-bottom: 3px;
+    margin-left: 1px;
+    margin-right: 10px;
+    margin-top: -12px;
+    border-radius: 25px;
+}
+
+.btn1 {
+    padding: 11px 30px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin-bottom: 3px;
+    margin-left: 550px;
+    margin-right: 10px;
+    margin-top: 25px;
+    border-radius: 25px;
+}
+
+/* Style for primary button */
+.btn-primary1 {
+    background-color: #c3c2b4e6;
+    color: #3e1a1a;
+}
+
+/* Style for button on hover */
+.btn:hover {
+    opacity: 0.8;
+}
+.row1{
+    display: block;
+    margin-bottom: 4px;
+    margin-left: 15px;
+    margin-top: 12px;
+    padding: .375rem .75rem;
+    font-size: -8rem;
+    font-weight: 400;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Style for the container */
+.select-container {
+    margin-bottom: 4px;
+    margin-left: 15px;
+    margin-top: 12px;
+    padding: .375rem .75rem;
+}
+/* Style for the label */
+.select-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style for the select element */
+.select-element {
+    width: 300px; /* Adjust width as needed */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    appearance: none; /* Remove default styles for the dropdown arrow (works in modern browsers) */
+    -webkit-appearance: none; /* For older versions of webkit browsers */
+    -moz-appearance: none; /* For older versions of Mozilla browsers */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16"><path d="M1 10l15 11 15-11z"/></svg>'); /* Custom dropdown arrow icon */
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+/* Style for the options */
+.select-element option {
+    padding: 8px;
+}
+
+/* Style for the dropdown arrow icon */
+.select-element::-ms-expand {
+    display: none; /* Remove default arrow icon in IE/Edge */
+}
+
+/* Style for the dropdown when opened */
+.select-element:focus {
+    outline: none; /* Remove default focus style */
+    border-color: #007bff; /* Change border color when focused */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Add a box shadow when focused */
+}
+.btn3 {
+	padding: 5px 15px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin-bottom: -34px;
+    margin-left: 61px;
+    margin-right: 10px;
+    margin-top: -2px;
+    border-radius: 25px;
+}

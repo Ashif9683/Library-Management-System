@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" ng-app="RetrunbookWithoutAccession">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" href="css/RetrunbookWithoutAccession.css" th:href="@{/css/RetrunbookWithoutAccession.css}" />
+	<link rel="stylesheet" href="css/confirmReturnBookModal.css" th:href="@{/css/confirmReturnBookModal.css}" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script type="text/javascript" href="js/angular.js" th:src="@{js/angular.js}"></script>
+
+	<script src="/js/RetrunbookWithoutAccession.js"></script>
+
+	<script src="/js/confirmReturnBookModalCtrl.js"></script>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+
+
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body ng-controller="RetrunBookController">
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+
+			<div class="row dashboard-counts">
+				<div class="col-md-12">
+
+					<h4 class="fw-bold text-uppercase"></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header text-uppercase">Return Book With Accession Number</div>
+
+						<div class="input-group mb-3">
+							<input type="text" class="form-control1" id="rNo"
+								placeholder="Enter the Accession Number... " ng-model="AccessionNUmber">
+
+							<button class="btn btn-primary1" type="button"
+								ng-click="withoutAsscessionFind()">Go</button>
+						</div>
+
+						<div id="WithoutAccDisplay" style="display: none;">
+							<div class="row1">
+								<div class="field">
+									<span class="label">Student Roll Number: </span> <span id="rollnumberid"
+										class="data">{{
+										withoutAccession.rollnumberid }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Student Name: </span> <span id="selectStudent" class="data">{{
+										withoutAccession.selectStudent }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Book Title: </span> <span id="selectbook" class="data">{{
+										withoutAccession.selectbook }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Book Quantity: </span> <span id="bookQuantityid" class="data">{{
+										withoutAccession.bookQuantityid }}</span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Accession Number: </span> <span id="accessionNumber"
+										class="data">{{
+										withoutAccession.accessionNumber }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Issue Book Date: </span> <span id="issueBookDate"
+										class="data">{{
+										withoutAccession.issueBookDate }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Book Retrun Date: </span> <span id="ReturnDate" class="data">{{
+										withoutAccession.returnDate }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Student Retrun Book Date : </span> <span
+										id="studentRetrunBookDate" class="data">{{
+										withoutAccession.studentRetrunBookDate
+										}}</span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Fine : </span> <span id="fine" class="data">{{
+										withoutAccession.fine
+										}}</span>
+								</div>
+								<div class="field">
+									<span class="label">Status : </span> <span id="fine" class="data">{{
+										withoutAccession.status
+										}}</span>
+								</div>
+								<div class="field">
+									<span class="label">Book Bank : </span> <span id="bookBank" class="data">{{
+										withoutAccession.bookBank
+										}}</span>
+								</div>
+							</div>
+							<a type="button" class="btn3 btn-primary1"	ng-click="returnbookOpen(withoutAccession.primaryKey)">Return Book</a>
+						<div th:include="confirmReturnBookModal :: nav-pop"> </div>
+						</div>
+					</div>
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</main>
+
+
+</body>
+
+</html>

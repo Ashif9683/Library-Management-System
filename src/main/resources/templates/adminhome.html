@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+	<title>Welcome Nitra Library Management</title>
+	
+	 <link  rel="stylesheet" href="css/adminhome.css"  th:href="@{/css/adminhome.css}" />
+	<script
+  		type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"  th:src="@{js/adminhome.js}"></script>
+   
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+   
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet"/>
+</head>
+<body>
+	<div class="banner">
+            <div class="navbar">
+                <img src="/images/logo.png" class="logo">
+                <ul>
+                   <li><a href="/adminhome">HOME</a></li>
+                    
+                    <li><a href="#">About</a></li>
+                </ul>
+
+            </div>
+		</div>
+		<div class="content">
+                <h1>Library Management </h1>
+                <p>whatever</p>
+                <div>
+                    <button type="button" onclick="window.location.href='/sign'"><span></span>Sign In</button>
+                    <button type="button" onclick="window.location.href='/register_page'"><span></span>Sign Up</button>
+             
+                </div>    
+            </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" href="css/StudentPerRecord.css" th:href="@{/css/StudentPerRecord.css}" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/StudentPerRecord.js" th:src="@{js/StudentPerRecord.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body>
+
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+			<!--Cards-->
+			<div class="row dashboard-counts">
+				<div class="col-md-12">
+
+					<h4 class="fw-bold text-uppercase"></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header text-uppercase">
+							Student Per Record
+							<button onclick="goBack()"  class="btn btn-primary1" >Back</button>
+						</div>
+						<div class="card-body">
+							<div class="row1">
+								<div class="field">
+									<span class="label">Student Roll Number: </span> <span id="rollnumber"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Full Name: </span> <span id="fullName" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Father Name: </span> <span id="fatherName" class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Email: </span> <span id="email"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Contact No.: </span> <span id="phone" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Semester Name: </span> <span id="selectSemester" class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Year Name : </span> <span id="selectYear"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Branch Name: </span> <span id="selectBranch" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Book Bank: </span> <span id="bookBank" class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Book Annually Duration: </span> <span id="bookAnnually"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Remark Student: </span> <span id="noDuess" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Created At: </span> <span id="createdAt" class="data"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

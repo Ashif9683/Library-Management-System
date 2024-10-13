@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link  rel="stylesheet" href="css/bootstrap.min.css"  th:href="@{/css/bootstrap.min.css}" />
+    <link  rel="stylesheet" href="css/dataTables.bootstrap5.min.css"  th:href="@{/css/dataTables.bootstrap5.min.css}" />
+    <link  rel="stylesheet" href="css/dashboard.css"  th:href="@{/css/dashboard.css}" />
+     <link  rel="stylesheet" href="css/userAdd.css"  th:href="@{/css/userAdd.css}" />
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+  	<script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/allProperties.js" th:src="@{js/allProperties.js}"></script>
+  	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+  	<script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/userAdd.js" th:src="@{js/userAdd.js}"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+   		
+    <title>Welcome Nitra Library Management</title>
+</head>
+
+	<body>
+	
+	<!--  header.html  -->
+	 <div th:include="header :: nav-bar"></div>
+	
+	<!--  side nav bar  -->
+	 <div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+	<div ></div>
+
+	
+<!--Main content start-->
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <!--Cards-->
+        <div class="row">
+            <div class="col-md-12">
+             
+                <h4 class="fw-bold "></h4>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-uppercase">
+                       Add User
+                    </div>
+                    <div class="card-body">
+                        <form id="myUserForm">
+                            <div class="row">
+                            	
+                            	 <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">User Name</label>
+                                        <input type="text" class="form-control" name="username"  id="username" placeholder="username"  required/>
+                                    </div>
+                                </div>
+                            	
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Employee Name</label>
+                                        <input type="text" class="form-control" name="employeename"  id="employeename" placeholder="Employee Name"  required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="email" required />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required/>
+                                    </div>
+                                </div>
+
+								<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Role</label>
+											<select name="userrole" class="form-control">
+												<option value="">Please select</option>
+												<option value="USER">USER</option>
+												<option value="ADMIN">ADMIN</option>
+												<option value="STUDENT">STUDENT</option>
+											</select>
+										</div>
+									</div>
+								
+                                <div class="col-md-12">
+                                    <button id="myButton" type="submit" name="submit" class="btn btn-success">
+                                        Add User
+                                    </button>
+
+                                    <button type="reset" class="btn btn-secondary">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!--Main content end-->
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link  rel="stylesheet" href="css/bootstrap.min.css"  th:href="@{/css/bootstrap.min.css}" />
+    <link  rel="stylesheet" href="css/dataTables.bootstrap5.min.css"  th:href="@{/css/dataTables.bootstrap5.min.css}" />
+    <link  rel="stylesheet" href="css/dashboard.css"  th:href="@{/css/dashboard.css}" />
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+  	<script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/allProperties.js" th:src="@{js/allProperties.js}"></script>
+  	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+  	<script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/addStudent.js" th:src="@{js/addStudent.js}"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+   		
+    <title>Welcome Nitra Library Management</title>
+</head>
+
+	<body>
+	
+	<!--  header.html  -->
+	 <div th:include="header :: nav-bar"></div>
+	
+	<!--  side nav bar  -->
+	 <div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+	
+	<!--Main Container Start-->
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <!--Cards-->
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="fw-bold text-uppercase"></h4>
+               
+            </div>
+
+            <!--Account info form-->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-uppercase">
+                        User Information
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">User Name</label>
+                                        <input type="text" class="form-control" name="username" th:value="${session.fectchUsernameAndPassword.username}" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="text" class="form-control" name="email" th:value="${session.fectchUsernameAndPassword.email}"/>
+                                    </div>
+                                </div>
+								<div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input type="text" class="form-control" name="password"  th:value="${session.fectchUsernameAndPassword.password}" />
+                                    </div>
+                                </div>
+                               <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">User Role</label>
+                                        <input type="text" class="form-control" name="userrole" th:value="${session.fectchUsernameAndPassword.userrole}" />
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-md-12">
+                                    <div class="mb-3 position-relative">
+                                        <label class="form-label">Profile Picture</label>
+                                        <input type="file" class="form-control" name="profile_pic" />
+                                        
+                                            <img src=""
+                                                     class="profile-pic" />
+                                       
+                                            <img src=""
+                                                     class="profile-pic" />
+                                       
+                                    </div>
+                                </div> -->
+
+                                <div class="col-md-6">
+                                    <button type="submit" name="profile_submit" class="btn btn-success">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</main>
+<!--Main Container End-->
+	
+</body>
+</html>

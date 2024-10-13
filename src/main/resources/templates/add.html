@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/addBook.js" th:src="@{js/addBook.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body>
+
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+	<!--Main content start-->
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+			<!--Cards-->
+			<div class="row">
+				<div class="col-md-12">
+					<h4></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<h6>Add Book</h6>
+							<p class="h1 ">
+							<h6>Last Accession Number</h6>
+							<span th:text="${maxAccessionNumber}"></span>
+							</p>
+						</div>
+						<div class="card-body">
+							<form id="myAddBookForm">
+								<div class="row">
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Library Name</label>
+											<input type="text" name="libraryName" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">ISBN Number</label>
+											<input type="text" name="isbnNumber" class="form-control"
+												required="required" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Library Item Type</label>
+											<input type="text" name="libraryItemType" class="form-control" />
+										</div>
+									</div> 
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Accession Code</label>
+											<select id="bookAccessionCode" name="bookAccessionCode" class="form-control">
+												<option value="">Please select</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Title</label>
+											<input type="text" name="booktitle" class="form-control" />
+										</div>
+									</div>
+									<!--<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Select Semester</label>
+											<select name="semesterName" class="form-control">
+												<option value="">Please select</option>
+												<option value="first semester">First Semester</option>
+												<option value="second semester">Second Semester</option>
+												<option value="third semester">Third Semester</option>
+												<option value="fourth semester">Fourth Semester</option>
+												<option value="fifth semester">Fifth Semester</option>
+												<option value="sixth semester">Sixth Semester</option>
+												<option value="seventh semester">Seventh Semester</option>
+												<option value="eighth semester">Eighth Semester</option>
+											</select>
+										</div>
+									</div>-->
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Added In</label>
+											<input type="text" name="bookAddedIn" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Category</label>
+											<select id="bookCategory" name="bookCategory" class="form-control">
+												<option value="">Please select</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Quantity</label>
+											<input type="text" name="bookquantity" class="form-control"
+												required="required" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Item Status</label>
+											<input type="text" name="itemStatus" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Subject Title</label>
+											<input type="text" name="subjectTitle" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Language Name</label>
+											<input type="text" name="languageName" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Author Name</label>
+											<input type="text" name="authorName" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Author Name 2</label>
+											<input type="text" name="authorName2" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Author Name 3</label>
+											<input type="text" name="authorName3" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Author Mark</label>
+											<input type="text" name="authorMark" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Call No.</label>
+											<input type="text" name="callNo" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Volume</label>
+											<input type="text" name="volume" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Edition</label>
+											<input type="text" name="edition" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Series No.</label>
+											<input type="text" name="seriesNo" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Series Title</label>
+											<input type="text" name="seriesTitle" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Publisher Name</label>
+											<input type="text" name="bookPublisherName" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Book Publisher Place</label>
+											<input type="text" name="bookPublisherPlace" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Vendor Name</label>
+											<input type="text" name="vendorName" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Vendor Place</label>
+											<input type="text" name="vendorPlace" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Publication Year</label>
+											<input type="number" name="publicationYear" class="form-control" required />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Bill Number</label>
+											<input type="text" name="billNumber" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Bill Date</label> <input type="date"
+												class="form-control" name="billDate" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Order Number</label>
+											<input type="text" name="orderNumber" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Order Date</label> <input type="date"
+												class="form-control" name="orderDate" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Cost of Item</label>
+											<input type="text" name="costOfItem" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Current Status</label>
+											<input type="text" name="currentStatus" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Currency Name</label>
+											<input type="text" name="currencyName" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Discount Amount</label>
+											<input type="text" name="discountAmount" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Rack No</label>
+											<input type="text" name="rackNumber" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Shelf No</label>
+											<input type="text" name="shelfNumber" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Pages No.</label>
+											<input type="text" name="pagesNumber" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Pre Pages</label>
+											<input type="text" name="prePages" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Size</label>
+											<input type="text" name="size" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Type Of Binding</label>
+											<input type="text" name="typeOfBinding" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Keywords</label>
+											<input type="text" name="keywords" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Publication Date</label> <input type="date"
+												class="form-control" name="publicationDate" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Location</label>
+											<input type="text" name="location" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Editor</label>
+											<input type="text" name="editor" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Compiler</label>
+											<input type="text" name="compiler" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Translator</label>
+											<input type="text" name="translator" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Abstract</label>
+											<input type="text" name="abstracts" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Discount in Percentage(Ture/False)</label>
+											<input type="text" name="discountInPercantage" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Sub Title</label>
+											<input type="text" name="subTitle" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Verified (Yes/No)</label>
+											<input type="text" name="verified" class="form-control" />
+										</div>
+									</div>
+									<div class="col-md-12">
+										<button id="myButton" name="submit" type="submit" class="btn btn-success">
+											Publish
+										</button>
+
+										<button type="reset" class="btn btn-secondary">
+											Cancel
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!--Main content end-->
+
+</body>
+
+</html>

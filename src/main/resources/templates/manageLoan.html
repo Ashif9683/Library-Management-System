@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link  rel="stylesheet" href="css/bootstrap.min.css"  th:href="@{/css/bootstrap.min.css}" />
+    <link  rel="stylesheet" href="css/dataTables.bootstrap5.min.css"  th:href="@{/css/dataTables.bootstrap5.min.css}" />
+    <link  rel="stylesheet" href="css/dashboard.css"  th:href="@{/css/dashboard.css}" />
+     <link  rel="stylesheet" href="css/manageLoan.css"  th:href="@{/css/manageLoan.css}" />
+     <link  rel="stylesheet" href="css/manageStudent.css"  th:href="@{/css/manageStudent.css}" />
+     	<link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
+     
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/manageLoan.js" th:src="@{js/manageLoan.js}"></script>
+  <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+	  	 <script type="text/javascript" src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+	
+	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+  	
+  	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+    <title>Welcome Nitra Library Management</title>
+</head>
+
+<body>
+	
+	<!--  header.html  -->
+	 <div th:include="header :: nav-bar"></div>
+	
+	<!--  side nav bar  -->
+	 <div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+<!--Main content start-->
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <!--Cards-->
+        <div class="row dashboard-counts">
+            <div class="col-md-12">
+               
+                <h4 class="fw-bold text-uppercase"></h4>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        All Books Issued
+                        
+                         <!-- <div class="search">
+                      <input  id="search-input" type="text" class="search-control" placeholder="Search.."  onkeyup="serachFun()" >
+                      <div class="search-input">
+                    result
+                      </div>
+                    </div> -->
+                    </div>
+                    
+                   
+                    
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="mytable" class="table table-responsive table-striped" style="width:100%">
+                                <thead class="table-dark">
+                                    <tr>
+                                    	<th scope="col">Student Rollno. Id</th>
+                                        <th scope="col">Book Name</th>
+                                        <th scope="col">Student Name</th>
+                                        <th scope="col">Book Issue Date</th>
+                                        <th scope="col">Return Date</th>
+                                        <th scope="col">Book Quantity Issue</th>
+                                        <th scope="col">Status</th>  
+                                        <th scope="col">Book Fine</th>  
+                                        <th scope="col">Created At</th>
+                                        <th:block th:if="${session.fectchUsernameAndPassword.userrole == 'ADMIN'}">
+                                        		<th scope="col">Action</th>
+                                         </th:block>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                            <tr th:each="bookissue : ${getBookissuelist}">
+                                                <td th:text="${bookissue.rollnumberid}"></td>
+                                                <td th:text="${bookissue.selectbook}"></td>
+                                                <td th:text="${bookissue.selectStudent}"> </td>
+                                                <td th:text="${bookissue.issueBookDate}"> </td>
+                                                <td th:text="${bookissue.ReturnDate}">  </td>
+                                                 <td th:text="${bookissue.bookQuantityid}">  </td>
+                                                <td th:text="${bookissue.status}"> </td>
+                                                <td th:text="${bookissue.fine}"> </td>
+                                                <td th:text="${bookissue.createdAt}"> </td>
+                                                <td>
+                                                    
+                                                    <th:block th:if="${session.fectchUsernameAndPassword.userrole == 'ADMIN'}">
+                                                    <a  th:attr="onclick='openbookissueDelete(\'' + ${bookissue.primaryKey} + '\')'" class="btn btn-danger btn-sm"> Delete  </a>
+                                                     </th:block>
+                                                    
+                                                 		 <div th:include="ConfirmationDeleteBookIssueMdlCtrl :: nav-pop"></div>
+                                                </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+$(document).ready(function() {
+	$("#mytable").dataTable();
+	
+	});
+</script>
+<!--Main content end-->
+</body>
+</html>

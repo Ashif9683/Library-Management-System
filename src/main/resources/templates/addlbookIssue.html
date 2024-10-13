@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" ng-app="myAppbook">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" href="css/addlbookIssue.css" th:href="@{/css/addlbookIssue.css}" />
+	<link rel="stylesheet" href="css/confirmReturnBookModal.css" th:href="@{/css/confirmReturnBookModal.css}" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script type="text/javascript" href="js/angular.js" th:src="@{js/angular.js}"></script>
+
+	<script src="/js/myAppbook.js"></script>
+	<script src="/js/confirmReturnBookModalCtrl.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+
+
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body ng-controller="MainController">
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+	<!--Main Container Start-->
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+
+			<div class="row dashboard-counts">
+				<div class="col-md-12">
+
+					<h4 class="fw-bold text-uppercase"></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header text-uppercase">Book Issue</div>
+
+						<div class="input-group mb-3">
+							<input type="text" class="form-control1" id="rNo" placeholder="Enter the Roll Number... " ng-model="rollNumber">
+
+							<div class="dropdown-container" ng-click="toggleDropdown()" ng-blur="closeDropdown()" tabindex="0">
+							        <input type="text" ng-model="searchTerm" ng-focus="openDropdown()" class="search-input" placeholder="Search students...">
+							        <div class="dropdown-list" ng-show="dropdownOpen">
+							            <div ng-repeat="item in students | filter:searchTerm track by $index"
+							                 ng-class="{'dropdown-item': true, 'selected': selectedItem === item}"
+							                 ng-click="selectItem(item)">
+							                {{ item }}
+							            </div>
+							        </div>
+							    </div>
+							   
+							<input type="text" class="form-control1" id="mobile" placeholder="Enter the Mobile Nu... "
+								ng-model="mobileNu">
+							<div class="input-group-append">
+								<button class="btn btn-primary1" type="button" ng-click="submitRollNumber()">Go</button>
+							</div>
+						</div>
+
+						<div id="dataDisplay" style="display: none;">
+							<div class="row1">
+								<div class="field">
+									<span class="label">Student Roll Number: </span> <span id="rollnumber"
+										class="data">{{ student.rollnumber }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Student Name: </span> <span id="fullName" class="data">{{
+										student.fullName }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Father Name: </span> <span id="selectBranch" class="data">{{
+										student.fatherName }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Branch: </span> <span id="selectBranch" class="data">{{
+										student.selectBranch }}</span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Book Bank: </span> <span id="selectYear" class="data">{{
+										student.bookBank }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Semester: </span> <span id="selectSemester" class="data">{{
+										student.selectSemester }}</span>
+								</div>
+								<div class="field">
+									<span class="label">Email: </span> <span id="email" class="data">{{ student.email
+										}}</span>
+								</div>
+								<div class="field">
+									<span class="label">Contact No. : </span> <span id="email" class="data">{{
+										student.phone }}</span>
+								</div>
+							</div>
+
+
+							<form ng-submit="submitForm()">
+								<div class="book">
+									Add Book
+								</div>
+								<div id="formContainer">
+									<div class="input-group mb-3">
+										
+										<input type="text" ng-model="accessionValue" class="form-control1"
+											placeholder="Enter Asscession Number" required>
+										<select ng-model="SelectBookBankValue" class="form-control1" >
+											<option value="" disabled selected>Select Book Bank</option>
+											<option value="yes" >Yes</option>
+											<option value="no" >No</option>
+										</select>
+										<button class="btnadd btn-primary1" type="button"
+											ng-click="bookrecord(accessionValue)">ADD</button>
+									</div>
+								</div>
+								<div id="databookDisplay" style="display: none;">
+									<div class="row1">
+										<div class="field">
+											<span class="label">Book Title: </span> <span id="booktitle" class="data">{{
+												book.booktitle }}</span>
+										</div>
+										<div class="field">
+											<span class="label">Author Name: </span> <span id="authorName"
+												class="data">{{ book.authorName }}</span>
+										</div>
+										<div class="field">
+											<span class="label">Author Name2: </span> <span id="authorName2"
+												class="data">{{ book.authorName2 }}</span>
+										</div>
+										<div class="field">
+											<span class="label">Publication Year: </span> <span id="bookname"
+												class="data">{{ book.publicationYear }}</span>
+										</div>
+									</div>
+									<div class="row1">
+										<div class="field">
+											<span class="label">Publisher Name: </span> <span id="bookPublisherName"
+												class="data">{{ book.bookPublisherName }}</span>
+										</div>
+										<div class="field">
+											<span class="label">Book Category: </span> <span id="bookCategory"
+												class="data">{{ book.bookCategory }}</span>
+										</div>
+										<div class="field">
+											<span class="label">Status: </span> <span id="itemStatus" class="data">{{
+												book.itemStatus }}</span>
+										</div>
+										<div class="field">
+											<span class="label">Edition: </span> <span id="edition" class="data">{{
+												book.edition }}</span>
+										</div>
+									</div>
+									<button class="btn1 btn-primary1 " type="button"
+										ng-click="saveData()">Issue</button>
+								</div>
+
+							</form>
+
+							<!--		<div>
+								<p>{{responseMessage}}</p>
+							</div> -->
+
+							<div class="select-container">
+								<div class="row mt-5">
+									<div class="col-md-12">
+										<ul class="nav nav-tabs" id="myTab" role="tablist">
+											<li class="nav-item" role="presentation">
+												<button class="nav-link  active" id="new-students" data-bs-toggle="tab"
+													data-bs-target="#new-students-pane" type="button" role="tab"
+													aria-controls="new-students-pane" aria-selected="true">
+													Book Issue Record</button>
+											</li>
+											<li class="nav-item" role="presentation">
+												<button class="nav-link " id="recent-loans" data-bs-toggle="tab"
+													data-bs-target="#recent-loans-pane" type="button" role="tab"
+													aria-controls="recent-loans-pane" aria-selected="false">Book Return
+													Record </button>
+											</li>
+											<!--	<li class="nav-item" role="presentation">
+											<button class="nav-link text-uppercase"
+												id="recent-subscription" data-bs-toggle="tab"
+												data-bs-target="#recent-subscription-pane" type="button"
+												role="tab" aria-controls="recent-subscription-pane"
+												aria-selected="false">Recent Subscriptions</button>
+										</li> -->
+										</ul>
+										<div class="tab-content" id="myTabContent">
+											<div class="tab-pane fade show active" id="new-students-pane"
+												role="tabpanel" aria-labelledby="new-students" tabindex="0">
+												<div class="table-responsive">
+													<table class="table table-responsive table-striped">
+														<thead class="table-dark">
+															<tr>
+																<th scope="col">Roll Nu.</th>
+																<th scope="col">Book Name</th>
+																<th scope="col">Accession Nu.</th>
+																<th scope="col">Student Name</th>
+																<th scope="col">Book Issue Date</th>
+																<th scope="col">Return Date</th>
+																<th scope="col">Book Quantity</th>
+																<th scope="col">Book Bank</th>
+																<th scope="col">Fine</th>
+																<th scope="col">Status</th>
+																<th scope="col">Action</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="issue in issues">
+																<td>{{ issue.rollnumberid }}</td>
+																<td>{{ issue.selectbook }}</td>
+																<td>{{ issue.accessionNumber }}</td>
+																<td>{{ issue.selectStudent }}</td>
+																<td>{{ issue.issueBookDate }}</td>
+																<td>{{ issue.returnDate }}</td>
+																<td>{{ issue.bookQuantityid }}</td>
+																<td>{{ issue.bookBank }}</td>
+																<td>{{ issue.fine }}</td>
+																<td>{{ issue.status }}</td>
+																<td>
+																	<!-- <button ng-click="returnbook(issue.primaryKey)">Return</button>  -->
+																	<a type="button" class="btn3 btn-primary1 "
+																		ng-click="returnbookOpen(issue.primaryKey)">Return
+																		Book</a>
+																	<div th:include="confirmReturnBookModal :: nav-pop">
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+											<div class="tab-pane fade" id="recent-loans-pane" role="tabpanel"
+												aria-labelledby="recent-loans" tabindex="0">
+												<div class="table-responsive">
+													<table class="table table-responsive table-striped">
+														<thead class="table-dark">
+															<tr>
+																<th scope="col">Roll Number</th>
+																<th scope="col">Book Name</th>
+																<th scope="col">Accession Number</th>
+																<th scope="col">Student Name</th>
+																<th scope="col">Issue Date</th>
+																<th scope="col">Return Date</th>
+																<th scope="col">Stun. Book Return Date</th>
+																<th scope="col">Book Quantity</th>
+																<th scope="col">Fine</th>
+																<th scope="col">Status</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="return in returns">
+																<td>{{ return.rollnumberid }}</td>
+																<td>{{ return.selectbook }}</td>
+																<td>{{ return.accessionNumber }}</td>
+																<td>{{ return.selectStudent }}</td>
+																<td>{{ return.issueBookDate }}</td>
+																<td>{{ return.returnDate }}</td>
+																<td>{{ return.studentRetrunBookDate }}</td>
+																<td>{{ return.bookQuantityid }}</td>
+																<td>{{ return.fine }}</td>
+																<td>{{ return.status }}</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+											<div class="tab-pane fade" id="recent-subscription-pane" role="tabpanel"
+												aria-labelledby="recent-subscription" tabindex="0">
+												<div class="table-responsive">
+													<table class="table table-responsive table-striped">
+														<thead class="table-dark">
+															<tr>
+																<th scope="col">Student Name</th>
+																<th scope="col">Amount</th>
+																<th scope="col">Start Date</th>
+																<th scope="col">End Date</th>
+																<th scope="col">Status</th>
+															</tr>
+														</thead>
+														<tbody>
+
+															<tr>
+																<th></th>
+																<td></td>
+																<td><span class="badge text-bg-info me-1"> </span> <i
+																		class="fa-solid fa-indian-rupee-sign"></i></td>
+																<td></td>
+																<td></td>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!--Main Container End-->
+</body>
+
+</html>

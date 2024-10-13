@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" href="css/StudentPerRecord.css" th:href="@{/css/StudentPerRecord.css}" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/BookPerRecord.js" th:src="@{js/BookPerRecord.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body>
+
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+			<!--Cards-->
+			<div class="row dashboard-counts">
+				<div class="col-md-12">
+
+					<h4 class="fw-bold text-uppercase"></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header text-uppercase">
+							Book Per Record
+							<button onclick="goBack()" class="btn btn-primary1">Back</button>
+						</div>
+						<div class="card-body">
+							<div class="rowhide">
+								<div class="field">
+									<span class="label">primary key : </span> <span id="primaryKey" class="data"></span>
+								</div>
+
+							</div>
+							<div class="row1">
+
+								<div class="field">
+									<span class="label">Library Name: </span> <span id="libraryName"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">ISBN Number: </span> <span id="isbnNumber" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Library Item Type: </span> <span id="libraryItemType"
+										class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Book Title: </span> <span id="booktitle" class="data"></span>
+								</div>
+
+								<div class="field">
+									<span class="label">Book Added In: </span> <span id="bookAddedIn"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Book Category: </span> <span id="bookCategory"
+										class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Book Quantity: </span> <span id="bookquantity"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Item Status: </span> <span id="itemStatus" class="data"></span>
+								</div>
+
+								<div class="field">
+									<span class="label">Language Name: </span> <span id="languageName"
+										class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Author Name: </span> <span id="authorName" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Author Name 2: </span> <span id="authorName2"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Author Name 3: </span> <span id="authorName3"
+										class="data"></span>
+								</div>
+
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Author Name 5: </span> <span id="authorName5"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Author Mark: </span> <span id="authorMark" class="data"></span>
+								</div>
+
+								<div class="field">
+									<span class="label">Call No. : </span> <span id="callNo" class="data"></span>
+								</div>
+							</div>
+
+							<div class="row1">
+
+								<div class="field">
+									<span class="label">Book Series No: </span> <span id="seriesNo" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Book Series Title: </span> <span id="seriesTitle"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Discount In Percantage: </span> <span id="discountInPercantage"
+										class="data"></span>
+								</div>
+							</div>
+
+							<div class="row1">
+								<div class="field">
+									<span class="label">Author Name 4: </span> <span id="authorName4"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Volume: </span> <span id="volume" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Subject Title: </span> <span id="subjectTitle"
+										class="data"></span>
+								</div>
+
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Book Publisher Name: </span> <span id="bookPublisherName"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Book Publisher Place: </span> <span id="bookPublisherPlace"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Vendor Name: </span> <span id="vendorName" class="data"></span>
+								</div>
+
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Vendor Place: </span> <span id="vendorPlace"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Publication Year: </span> <span id="publicationYear"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Currency Name: </span> <span id="currencyName"
+										class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+
+								<div class="field">
+									<span class="label">Bill Number: </span> <span id="billNumber" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Bill Date: </span> <span id="billDate" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Order Number: </span> <span id="orderNumber"
+										class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Order Date: </span> <span id="orderDate" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Cost of Item: </span> <span id="costOfItem" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Current Status </span> <span id="currentStatus"
+										class="data"></span>
+								</div>
+
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Discount Amount: </span> <span id="discountAmount"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Rack No: </span> <span id="rackNumber" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Shelf No: </span> <span id="shelfNumber" class="data"></span>
+								</div>
+							</div>
+
+							<div class="row1">
+								<div class="field">
+									<span class="label">Pages No: </span> <span id="pagesNumber" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Pre Pages: </span> <span id="prePages" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Publication Date: </span> <span id="publicationDate"
+										class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+
+								<div class="field">
+									<span class="label">Size: </span> <span id="size" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Type Of Binding: </span> <span id="typeOfBinding"
+										class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Keywords: </span> <span id="keywords" class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+
+								<div class="field">
+									<span class="label">Location: </span> <span id="location" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Editor: </span> <span id="editor" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Compiler: </span> <span id="compiler" class="data"></span>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Translator: </span> <span id="translator" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Abstract: </span> <span id="abstracts" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Sub Title: </span> <span id="subTitle" class="data"></span>
+								</div>
+
+							</div>
+							<div class="row1">
+								<div class="field">
+									<span class="label">Edition: </span> <span id="edition" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">UserID: </span> <span id="userName" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Employee Name: </span> <span id="employeeName"
+										class="data"></span>
+								</div>
+							</div>
+
+							<div class="row1">
+
+								<div class="field">
+									<span class="label">Entry Date: </span> <span id="entryDate" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Verified: </span> <span id="verified" class="data"></span>
+								</div>
+								<div class="field">
+									<span class="label">Created At: </span> <span id="createdAt" class="data"></span>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</main>
+</body>
+
+</html>

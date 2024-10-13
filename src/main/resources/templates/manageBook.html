@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" th:href="@{/css/dataTables.bootstrap5.min.css}" />
+	<link rel="stylesheet" href="css/dashboard.css" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" href="css/manageBook.css" th:href="@{/css/manageBook.css}" />
+
+	
+	<link rel="stylesheet" href="css/OpenBookDetailModel.css" th:href="@{/css/OpenBookDetailModel.css}" />
+	<link rel="stylesheet" href="css/Dropdown.css" th:href="@{/css/Dropdown.css}" />
+
+	<link rel="stylesheet" href="css/loader.css" th:href="@{/css/loader.css}" />
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/manageBook.js" th:src="@{js/manageBook.js}"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+				href="js/Dropdown.js" th:src="@{js/Dropdown.js}"></script>
+				
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+		href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<title>Welcome Nitra Library Management</title>
+</head>
+
+<body th:data-user-role="${session.fectchUsernameAndPassword.userrole}">
+
+	<!--  header.html  -->
+	<div th:include="header :: nav-bar"></div>
+
+	<!--  side nav bar  -->
+	<div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+	<div th:include="EditBookModel :: nav-book"></div>
+
+	<div th:include="ConfirmationDeleteBookModel :: nav-depop"></div>
+
+	<div th:include="OpenBookDetailModel :: nav-bookdetail"></div>
+
+	<!--Main content start-->
+	<main class="mt-5 pt-3">
+		<div class="container-fluid">
+			<!--Cards-->
+			<div class="row dashboard-counts">
+				<div class="col-md-12">
+					<h4 class="fw-bold text-uppercase"></h4>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header fw-bold">
+							<div class="mana">
+								Manage Books
+							</div>
+							
+							
+							<div class="filterA">
+								
+								
+								<select id="AsscessionRecords" name="AsscessionRecords"></select>
+								
+								<button class="btnG btn-primary1" type="button" onclick="getAssessionNumber()">Go</button>
+								
+								<button class="btnG btn-primary1" type="button" onclick="refreshPage()">Reset</button>		
+							</div>
+							
+							<div class="search">
+								<input type="text" id="searchbookInput" class="search-control"
+									onkeyup="searchbookTable()" placeholder="Search ........" />
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive" style="overflow-x: auto;">
+								<table id="data-table" class="table table-responsive table-striped" style="width:100%">
+									<thead class="table-dark">
+										<tr>
+											<th scope="col">Book Title</th>
+											<th scope="col">Author Name</th>
+											<th scope="col">Book Category</th>
+											<th scope="col">Book Quantity</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody id="bookRecords">
+										<!-- record book insert-->
+									</tbody>
+								</table>
+								<ul id="pagination" class="pagination"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="loader-div">
+		    				    	<img class="loader-img" src="/images/ajax-loader.gif" style="height: 120px;width: auto;" />
+						   </div>
+	</main>
+	<!--Main content end-->
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+ .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+                background-color: #fefefe;
+			    margin: 12% auto;
+			    display: flex;
+			    padding: 3px;
+			    margin-left: 520px;
+			    border: 1px solid #888;
+			    width: 60%;
+        }
+
+        .close {
+            color: #240f0f;
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .confirmDeleteButton{
+        	float: right;
+        	font-size: 14px; 
+            padding: 5px 10px;
+}
+.btn5 {
+     padding: 11px 30px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    margin-bottom: 3px;
+    margin-left: 20px;
+    margin-right: 399px;
+    margin-top: 25px;
+    border-radius: 25px;
+}
+
+/* Style for primary button */
+.btn-primary5 {
+    background-color: #c3c2b4e6;
+    color: #3e1a1a;
+}

@@ -1,0 +1,61 @@
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	
+	background-color: rgba(0, 0, 0, 0.4);
+	overflow-y: auto;
+}
+.modal-body1 {
+    position: relative;
+    flex: 1 1 auto;
+    padding: var(--bs-modal-padding);
+    overflow-y: auto;
+    max-height: 600px;
+}
+.row1{
+    display: block;
+    margin-bottom: 4px;
+    margin-left: 15px;
+    margin-top: 12px;
+    padding: .375rem .75rem;
+    font-size: -8rem;
+    font-weight: 400;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.field {
+    flex: 1;
+    margin-right: 10px;
+}
+.data {
+    font-weight: bold;
+    color: #333; /* Change color as needed */
+}
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% 20%;
+	padding: 0px;
+	border: 1px solid #888;
+	width: 75%;
+	margin-right: 48px;
+}
+
+.close {
+	color: #240f0f;
+	float: left;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.confirmDeleteButton {
+	float: right;
+	font-size: 14px;
+	padding: 5px 10px;
+}

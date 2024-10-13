@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<title>Welcome Nitra Library Management</title>
+      <link  rel="stylesheet" href="css/bootstrap.min.css"  th:href="@{/css/bootstrap.min.css}" />
+    <link  rel="stylesheet" href="css/dataTables.bootstrap5.min.css"  th:href="@{/css/dataTables.bootstrap5.min.css}" />
+    <link  rel="stylesheet" href="css/dashboard.css"  th:href="@{/css/dashboard.css}" />  
+    <link  rel="stylesheet" href="css/fileUploadStudent.css"  th:href="@{/css/fileUploadStudent.css}" />
+        <link  rel="stylesheet" href="css/loader.css"  th:href="@{/css/loader.css}" />
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/1c26fb5c51.js" th:src="@{js/1c26fb5c51.js}"></script>
+	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.bundle.min.js" th:src="@{js/bootstrap.bundle.min.js}"></script>
+  	<script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/allProperties.js" th:src="@{js/allProperties.js}"></script>
+  	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+  	 <script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js" href="js/fileUploadStudent.js" th:src="@{js/fileUploadStudent.js}"></script> 
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.15/dist/sweetalert2.all.min.js"></script>
+   	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+</head>
+<body>
+	<!--  header.html  -->
+	 <div th:include="header :: nav-bar"></div>
+	
+	<!--  side nav bar  -->
+	 <div th:include="sideNavbar :: sidenav-bar"></div>
+	<!-- side nav bar  -->
+	
+	<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <!--Cards-->
+        <div class="row">
+            <div class="col-md-12">
+              <h4 class="fw-bold text-uppercase"></h4>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header fw-bold">
+                       Upload Book Record  Excel File
+                    </div>
+                    <div class="card-body">
+					    <input  type="file" id="filebookInput" >
+					    <button class="button" onclick="uploadbookFile()">Upload Book </button>
+					    <h6 class="button-sample"> Sample download Book Excel Sheet </h6>
+					    <button class="button" onclick="createBookExcel()">Download Book Excel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loader-div">
+    				    	<img class="loader-img" src="/images/ajax-loader.gif" style="height: 120px;width: auto;" />
+				   </div>
+</main>
+</body>
+</html> 
